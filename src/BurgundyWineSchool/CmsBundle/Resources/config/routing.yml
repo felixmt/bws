@@ -1,0 +1,11 @@
+login:
+    path:      /login
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+index:
+    path:     /test/{route}
+    defaults: { _controller: CmsBundle:Default:index, templateName:index }
+    
+default:
+    path:     /
+    defaults: { _controller: CmsBundle:Default:index, templateName:index }

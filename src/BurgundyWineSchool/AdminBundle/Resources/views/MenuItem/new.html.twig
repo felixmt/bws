@@ -1,0 +1,69 @@
+{# src/BurgundyWineSchool/AdminBundle/Resources/views/MenuItem/new.html.twig #}
+
+{% extends "AdminBundle::base_admin.html.twig" %}
+
+    {% block body %}
+    <section class="main-content" id="home">
+			<section class="wrapper">
+				
+				{#<?php include_once __DIR__.'/../include/breadcrumb.php'; ?>#}
+				
+				<div class="row block title">
+					<div class="col-md-12">
+						<section class="panel title">
+							<div class="panel-body">
+								Ajouter un élément de menu
+                                   {% if page_id is defined %}
+                                        <div class="pull-right">
+                                            <a onclick="return confirm(\' Cette action est irréversible, êtes-vous sûr de vouloir supprimer cet élément de menu ?\');" href="{{ path('admin_menu_item_delete', { 'id': menuItem.id })  }}" class="btn btn-default btn-title">Supprimer</a>
+                                        </div>
+                                   {% endif %}
+							</div>
+						</section>
+					</div>
+				</div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="panel">
+                            <div class="panel-body">
+                                {{ form_start(form, { 'attr': { 'class' : 'form-horizontal', 'data-toggle': 'validator' } }) }}
+                                    {{ form_errors(form) }}
+                                    
+                                    <div class="form-group">
+                                        {{ form_label(form.name, null, { 'label_attr' : { 'class': 'col-md-2 control-label' } }) }}
+                                        <div class="col-md-10 col-lg-5">
+                                            {{ form_widget(form.name) }}
+                                            {{ form_errors(form.name) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_label(form.route, null, { 'label_attr' : { 'class': 'col-md-2 control-label' } }) }}
+                                        <div class="col-md-10 col-lg-5">
+                                            {{ form_widget(form.route) }}
+                                            <span class="help-block">Uniquement des lettres</span>
+                                            {{ form_errors(form.route) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_label(form.page, null, { 'label_attr' : { 'class': 'col-md-2 control-label' } }) }}
+                                        <div class="col-md-10 col-lg-5">
+                                            {{ form_widget(form.page) }}
+                                            {{ form_errors(form.page) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12 col-lg-7" style="margin-right:0px">
+                                            <div class="pull-right">
+                                                {{ form_row(form.Valider) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+			</section>
+		</section>
+	</section>
+    {% endblock %}

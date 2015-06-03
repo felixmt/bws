@@ -1,0 +1,15 @@
+# BurgundyWineSchool/CmsBundle/Resources/config/validation.yml
+
+BurgundyWineSchool\CmsBundle\Entity\Page:
+    properties:
+        content:
+            - NotBlank: ~
+            
+BurgundyWineSchool\CmsBundle\Entity\MenuItem:
+    properties:
+        name:
+            - NotBlank: ~
+            - Length:
+                max: 15
+        route:
+            - NotBlank: ~

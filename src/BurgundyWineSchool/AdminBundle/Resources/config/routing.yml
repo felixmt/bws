@@ -1,0 +1,35 @@
+admin_homepage:
+    path:     /admin
+    defaults: { _controller: AdminBundle:Admin:index, templateName: index }
+    
+admin_page_new:
+    path:     /admin/pages/new
+    defaults: { _controller: AdminBundle:Page:new, templateName: new }
+    
+admin_page_list:
+    path:     /admin/pages
+    defaults: { _controller: AdminBundle:Page:list, templateName: list }
+    
+admin_page_update:
+    path:     /admin/pages/update/{id}
+    defaults: { _controller: AdminBundle:Page:new, templateName: new }
+
+admin_menu_item_new:
+    path:     /admin/menu/items/new
+    defaults: { _controller: AdminBundle:MenuItem:new, templateName: new }
+    
+admin_menu_item_list:
+    path:     /admin/menu/items
+    defaults: { _controller: AdminBundle:MenuItem:list, templateName: list }
+    
+admin_menu_item_update:
+    path:     /admin/menu/items/update/{id}
+    defaults: { _controller: AdminBundle:MenuItem:new, templateName: new }
+
+admin_menu_item_delete:
+    path:     /admin/menu/items/delete/{id}
+    defaults: { _controller: AdminBundle:MenuItem:delete, templateName: list }
+
+admin_appearance:
+    path:     /admin/appearance
+    defaults: { _controller: AdminBundle:Admin:new, templateName: new }

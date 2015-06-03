@@ -1,0 +1,14 @@
+# BurgundyWineSchool/AdminBundle/Resources/config/validation.yml
+
+BurgundyWineSchool\AdminBundle\Entity\Appearance:
+    properties:
+        file:
+            - File:
+                maxSize: 1024k
+                mimeTypes: [image/jpg, image/jpeg]
+                mimeTypesMessage: Choisissez un fichier JPEG valide de taille inférieure à 1Mo
+        backgroundImage:
+            - File:
+                maxSize: 5024k
+                mimeTypes: [image/jpg, image/jpeg]
+                mimeTypesMessage: Choisissez un fichier JPEG valide de taille inférieure à 5Mo

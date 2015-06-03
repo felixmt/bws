@@ -1,0 +1,56 @@
+{# src/BurgundyWineSchool/AdminBundle/Resources/views/Page/new.html.twig #}
+
+{% extends "AdminBundle::base_admin.html.twig" %}
+
+    {% block body %}
+    <section class="main-content" id="home">
+			<section class="wrapper">
+				
+				{#<?php include_once __DIR__.'/../include/breadcrumb.php'; ?>#}
+				
+				<div class="row block title">
+					<div class="col-md-12">
+						<section class="panel title">
+							<div class="panel-body">
+								Ajouter une page
+							</div>
+						</section>
+					</div>
+				</div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="panel">
+                            <div class="panel-body">
+                                {{ form_start(form, { 'attr': { 'class' : 'form-horizontal', 'data-toggle': 'validator' } }) }}
+                                    {{ form_errors(form) }}
+                                    <div class="form-group">
+                                        {{ form_label(form.title, null, { 'label_attr' : { 'class': 'col-md-2 control-label' } }) }}
+                                        <div class="col-md-10 col-lg-5">
+                                            {{ form_widget(form.title) }}
+                                            {{ form_errors(form.title) }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form_label(form.content, null, { 'label_attr' : { 'class': 'col-md-2 control-label' } }) }}
+                                        <div class="col-md-10 col-lg-5">
+                                            {{ form_widget(form.content) }}
+                                            {{ form_errors(form.content) }}
+                                        </div>
+                                    </div>
+                                    {{ form_row(form.isHomepage) }}
+                                    <div class="form-group">
+                                        <div class="col-md-12 col-lg-7" style="margin-right:0px">
+                                            <div class="pull-right">
+                                                {{ form_row(form.Valider) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+			</section>
+		</section>
+	</section>
+    {% endblock %}

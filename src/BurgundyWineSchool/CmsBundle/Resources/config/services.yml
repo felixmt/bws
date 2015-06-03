@@ -1,0 +1,3 @@
+# services:
+    # burgundy_wine_school.login:
+        # class: BurgundyWineSchool\UserBundle\Controller\SecurityController

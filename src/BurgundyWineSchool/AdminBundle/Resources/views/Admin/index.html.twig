@@ -1,0 +1,42 @@
+{# src/BurgundyWineSchool/AdminBundle/Resources/views/Admin/index.html.twig #}
+
+{% extends "AdminBundle::base_admin.html.twig" %}
+
+    {% block body %}
+    <section class="main-content" id="home">
+			<section class="wrapper">
+				
+				{#<?php include_once __DIR__.'/../include/breadcrumb.php'; ?>#}
+				
+				<div class="row block title">
+					<div class="col-md-12">
+						<section class="panel title">
+							<div class="panel-body">
+								Tableau de bord
+							</div>
+						</section>
+					</div>
+				</div>
+
+                <div class="row block">
+                    <div class="col-md-12">
+                        <section class="panel block-home" id="block-home-<?php echo $i; ?>">
+                            <header class="panel-heading">
+                                Panneau vide
+                                <span class="tools pull-right">
+                                    <a class="fa fa-chevron-down" style="color:#fff;" href="#!" onClick="slideBlock(this)"></a>
+                                    <a class="fa fa-times" style="color:#fff;" href="#!" onClick="hideBlock(this)"></a>
+                                </span>
+                            </header>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <a href="?section=intervention-list" class="pull-right">Accéder au suivi des interventions <i class="fa fa-share"></i></a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+			</section>
+		</section>
+	</section>
+    {% endblock %}

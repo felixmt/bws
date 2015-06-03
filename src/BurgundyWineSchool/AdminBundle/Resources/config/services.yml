@@ -1,0 +1,15 @@
+services:
+    burgundy_wine_school.form.type.page:
+        class: BurgundyWineSchool\AdminBundle\Form\Type\PageType
+        tags:
+            - { name: form.type, alias: page }
+            
+    burgundy_wine_school.form.type.menuItem:
+        class: BurgundyWineSchool\AdminBundle\Form\Type\MenuItemType
+        tags:
+            - { name: form.type, alias: menuItem }
+            
+    burgundy_wine_school.form.type.appearance:
+        class: BurgundyWineSchool\AdminBundle\Form\Type\AppearanceType
+        tags:
+            - { name: form.type, alias: appearance }

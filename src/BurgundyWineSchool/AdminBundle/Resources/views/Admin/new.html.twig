@@ -1,0 +1,87 @@
+{# src/BurgundyWineSchool/AdminBundle/Resources/views/Admin/new.html.twig #}
+
+{% extends "AdminBundle::base_admin.html.twig" %}
+
+    {% block body %}
+    <section class="main-content" id="home">
+			<section class="wrapper">
+				
+				{#<?php include_once __DIR__.'/../include/breadcrumb.php'; ?>#}
+				
+				<div class="row block title">
+					<div class="col-md-12">
+						<section class="panel title">
+							<div class="panel-body">
+								Apparence du site
+							</div>
+						</section>
+					</div>
+				</div>
+                {% for flashMessage in app.session.flashbag.get('notice') %}
+                    <div class="row block">
+                        <div class="col-md-12">
+                            <section class="panel">
+                                <div class="panel-body notification-success">
+                                    <div class="flash-notice" style="float:left;">
+                                        {{ flashMessage }}
+                                    </div>
+                                    <span class="tools pull-right">
+                                        <a href="#" class="fa fa-times" onClick="hideBlock(this)"></a>
+                                    </span>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="panel">
+                            <div class="panel-body">
+                                {{ form_start(form, { 'attr': { 'class' : 'form-horizontal', 'data-toggle': 'validator' } }) }}
+                                    {{ form_errors(form) }}
+                                    <div class="form-group" id="firstground-file">
+                                        {{ form_label(form.file, null, { 'label_attr' : { 'class': 'col-md-2 control-label' } }) }}
+                                        <div class="col-md-2 col-lg-2 input-file-container">
+                                            {{ form_widget(form.file) }}
+                                            <label for="appearance-firstground" class="input-file-trigger" tabindex="0">Sélectionnez une image
+                                        </div>
+                                        {{ form_errors(form.file) }}
+                                        <div id="firstground-filename" class="col-md-3 col-lg-3"></div>
+                                    </div>
+                                    <div class="form-group" id="background-file">
+                                        {{ form_label(form.backgroundImage, null, { 'label_attr' : { 'class': 'col-md-2 control-label' } }) }}
+                                        <div class="col-md-2 col-lg-2 input-file-container">
+                                            {{ form_widget(form.backgroundImage) }}
+                                            <label for="appearance-background" class="input-file-trigger" tabindex="0">Sélectionnez une image
+                                        </div>
+                                        {{ form_errors(form.backgroundImage) }}
+                                        <div id="background-filename" class="col-md-3 col-lg-3"></div>
+                                    </div>
+                                    <p class="file-return"></p>
+                                    <div class="form-group">
+                                        <div class="col-md-12 col-lg-7" style="margin-right:0px">
+                                            <div class="pull-right">
+                                                {{ form_row(form.Valider) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </section>
+                    </div>
+                </div>
+			</section>
+		</section>
+	</section>
+    {% endblock %}
+    {% block javascripts %}
+    <script>
+    $("#appearance_file").change(function(){
+        $("#firstground-filename").html('Fichier sélectionné : <span style="font-weight:bold;font-style:italic">' + $(this).val() + '</span>');
+    });
+    
+    $("#appearance_backgroundImage").change(function(){
+        $("#background-filename").html('Fichier sélectionné : <span style="font-weight:bold;font-style:italic">' + $(this).val() + '</span>');
+    });
+    </script>
+    {% endblock %}

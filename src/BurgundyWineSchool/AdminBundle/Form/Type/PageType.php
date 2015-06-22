@@ -12,8 +12,20 @@ class PageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('title', 'text', array('label' => 'Titre', 'attr' => array('class' => 'form-control', 'placeholder' => 'Titre')));
-        $builder->add('content', 'textarea', array('label' => 'Contenu', 'attr' => array('class' => 'form-control ckeditor', 'required' => true)));
+        $builder->add('content', 'ckeditor', array(
+            'label' => 'Contenu', 
+            'attr' => array(
+                'class' => 'form-control', 
+                'required' => true
+            ), 
+            'config' => array(
+                'filebrowserBrowseRoute'           => 'elfinder',
+                'filebrowserBrowseRouteParameters' => array('instance' => 'default')
+                // 'filebrowserBrowseRouteAbsolute'   => true,
+            ),
+        ));
         $builder->add('isHomepage', 'checkbox', array('label' => 'Utiliser en tant que page d\'accueil', 'attr' => array('class' => 'form-control'), 'required' => false));
+        $builder->add('Enregistrer', 'submit', array('attr' => array('class' => 'btn btn-info')));
         $builder->add('Valider', 'submit', array('attr' => array('class' => 'btn btn-success')));
     }
     

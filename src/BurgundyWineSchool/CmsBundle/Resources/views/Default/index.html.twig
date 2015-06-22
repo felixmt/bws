@@ -3,7 +3,52 @@
 {% extends "CmsBundle::base_frontend.html.twig" %}
 
 {% block body  %}
-  {{ content.content|raw }}
+    {{ content.content|raw }}
+    {% if content.isHomepage %}
+        <div style="font-weight:bold;font-size:24px;">Inscription à la newsletter</div>
+        <form class="form-inline" name="newsletter-form" id="newsletter-form" method="post" action="stop" id="newsletter-form" style="margin-left:20px;margin-top: 20px;margin-bottom:20px;" role="form" data-toggle="validator">
+            <div class="form-group">
+                <label for="name">Nom</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Jean Brown" required/>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="example@mail.com" required/>
+            </div>
+            <button id="mail-button" type="submit" class="btn btn-info">S'inscrire</button>
+        </form>
+        <div id="subscription-notification" style="text-align:center;"></div>
+    {% endif %}
 {% endblock %}
 {% block javascripts %}
+<script>
+    function subscribeNewsletter(form) {
+        var url = "{{ path('newsletter_subscribe_ajax') }}";
+        $.post(url, { 'name' : form.name.value, 'email' : form.email.value }, function (data) {
+            if (data.isSuccess == 1) {
+                alert (data.isSuccess);
+                $('<div class="row block"><div class="col-md-12"><section class="panel"><div class="panel-body notification-error"><div class="flash-notice" style="float:left;">' + data.notice + '</div><span class="tools pull-right"><a href="#" class="fa fa-times" onClick="hideBlock(this)"></a></span></div></section></div></div>').insertAfter(".main-title");
+            } else {
+                alert ('error');
+            }
+        });
+    }
+    
+    $( "#newsletter-form" ).submit(function( event ) {
+        var name = $("input:first").val();
+        var email = $("input:last").val();
+        var url = "{{ path('newsletter_subscribe_ajax') }}";
+        $.post(url, { 'name' : name, 'email' : email }, function (data) {
+            var html = '<span class="notification-';
+            if (data.isSuccess == 1) {
+               html += 'success'; 
+            } else {
+                html += 'error';
+            }
+            html += '">' + data.notice + '</span>';
+            $("#subscription-notification").html(html);
+        });
+        event.preventDefault();
+    });
+</script>
 {% endblock %}

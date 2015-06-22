@@ -1,0 +1,396 @@
+/*
+Author : Felix Motot*/
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700);
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+
+/* hide spin on input number*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+/** bug firefox */
+@-moz-document url-prefix() {
+    fieldset {
+        display: table-cell;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Tahoma', sans-serif;
+}
+
+html {
+	height:100%;
+}
+
+body {
+    font-size: 14px;
+    font-family: 'Tahoma', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #f1f2f7;
+	height:100%;
+	position:relative;
+}
+
+#container {
+	min-height:calc(100% - 40px);
+	position:relative;	
+}
+
+.title .panel-body {
+    padding: 8px;
+}
+.panel {
+    margin-bottom:12px;
+}
+
+a {
+	color: #a6a6a6;
+}
+
+a:focus {
+    outline: none;
+}
+
+a:hover {
+	color: #232323;
+}
+
+a.breadcrumb-last {
+    color:#777;
+}
+
+.breadcrumb a:hover.breadcrumb-last {
+    color: #a6a6a6;
+}
+
+.input-lg  {
+	font-size:inherit;
+}
+
+.color-red, .notification-error {
+	color:#a94442;
+}
+.color-green, .notification-success {
+	color:#3c763d;
+}
+
+.color-blue {
+    color:#347ab6;
+}
+
+.btn.btn-title {
+    font-size: 10px;
+    padding: 3px 6px;
+}
+
+.btn-tab {
+    padding-top:15px;
+    padding-right:15px;
+}
+
+/* HEADER ***************************************/
+/* hide logos when screen size smaller than 800 px */
+@media (max-width:768px) { 
+	.logo { display:none; }
+}
+.header {
+	background-color:#fff;
+	padding-top:10px;
+	padding-bottom:10px;
+	position:fixed;
+	z-index: 1002;
+	width:100%;
+	height:61px;
+    border-bottom: 1px solid #f1f2f7;
+}
+.sidebar-toggle-box {
+	float:left;
+	margin-left:15px;
+	margin-top:10px;
+	padding-right: 132px;
+}
+
+.sidebar-toggle-box .fa-bars {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 20px;
+}
+
+a.logo {
+	margin-right: 65px;
+}
+
+.logout {
+	margin-top:10px;
+	margin-right:30px;
+}
+
+/* SIDEBAR *******************************************/
+#sidebar {
+    background: none repeat scroll 0 0 #35404D;
+    height: 100%;
+    position: fixed;
+    width: 220px;
+}
+
+#sidebar .nav > li > a {
+	padding: 30px 15px 0;
+	color:#fff;
+}
+
+#sidebar .nav > li > a:hover, #sidebar .nav > li > a:focus {
+	color:#a6a6a6;
+	background-color:#35404D;
+}
+
+#sidebar .nav > li a.active {
+    color:#a6a6a6;
+}
+
+.nav-second-level {
+    margin-left:15px;
+}
+
+/*#sidebar .nav > li.active > a {
+	color: #f07d00;
+}*/
+
+.active-menu {
+    background-color: #cf022b !important;
+}
+
+.arrow {
+    float: right;
+    margin-top: 8px;
+}
+
+.fa.arrow:before {
+    content: "\f104";
+}
+
+.active > a > .fa.arrow:before {
+    content: "\f107";
+}
+
+#main-menu {
+	margin-top: 61px;
+}
+
+#main-menu .fa	{
+	/*font-size:20px;*/
+}
+
+/* BREADCRUMB *********************************************/
+.breadcrumb {
+	background-color: #fff;
+    border-radius: 0px;
+    margin-bottom: 0;
+    padding: 0;
+	font-size:14px;
+}
+
+.breadcrumb li a:hover {
+	text-decoration:none;
+	color: #777;
+}
+
+/* MAIN CONTENT *******************************************/
+.panel.title {
+	background-color:#5B6E84;
+	color:#fff;
+}
+.panel-heading {
+    border-color: #eff2f7;
+	font-weight:bold;
+}
+.main-content {
+	margin-left: 220px;
+}
+.wrapper  {
+    display: inline-block;
+    padding: 15px;
+    padding-bottom:0;
+    width: 100%;
+	margin-top:61px;
+}
+
+.block.title {
+	font-weight:bold;
+	font-size:18px;
+}
+
+.breadcrumb .fa {
+	font-size: 20px;
+}
+
+/* FORMS ************************************/
+.form-horizontal .control-label {
+	text-align:left;
+}
+
+.tabbed-form {
+    margin-top:30px;
+}
+
+/* HOME **********************************************/
+.block-home a {
+	color:#fff;
+	font-weight:bold;
+}
+#block-home-1 {
+	background-color:#f0ad4e;
+	color:#fff;
+}
+
+#block-home-1 .table-hover > tbody > tr:hover {
+	background-color:#ec9746;
+}
+
+#block-home-2 {
+	background-color:#5cb85c;
+	color:#fff;
+}
+
+#block-home-3 {
+	background-color:#d9534f;
+	color:#fff;
+}
+
+#block-home-2 .table-hover > tbody > tr:hover {
+	background-color:#61ae20;
+}
+
+#home .table > thead > tr > th, #home .table > tbody > tr > td {
+    border-color:#fff;
+}
+
+/* CAMPAIGN ***********************************/
+.dataTables_filter {
+	float:right;
+}
+/* LOGIN *************************************/
+#login-sopra {
+	margin-left:150px;
+	padding-top:37.5px;
+}
+
+#login-bnp {
+	margin-right:150px;
+	padding-top:30px;
+}
+
+#login-header {
+	height: 100px;
+	padding:0 !important;
+	background-color: #F1F2F7;
+	position: relative !important;
+}
+
+#login-border {
+	margin-left:240px;
+	height:100%;
+	border-bottom: 5px solid #cf022b;
+}
+
+#login-checkbox {
+	padding-left:10px;
+}
+
+#login-button {
+	margin-top:30px;
+}
+
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.Absolute-Center.is-Responsive {
+  width: 50%; 
+  height: 50%;
+  min-width: 200px;
+  max-width: 500px;
+  padding: 40px;
+}
+
+/* SYNTHESE GAB **********************************/
+#gab_table > tbody > tr > td {
+    padding:0;
+    font-size:10px;
+    border-top:0 !important;
+}
+
+.dropdown-menu {
+    min-width:190px;
+    padding-bottom:10px;
+}
+
+.dropdown-menu > li {
+   /* padding:10px 20px 0 20px;*/
+}
+
+.popover-content {
+	text-align:center;
+}
+
+/* FOOTER ****************************************/
+.site-footer {
+	background-color:#5B6E84;
+	padding:10px 0;
+	color:#fff;
+}
+
+.go-top {
+	margin-right: 15px;
+}
+
+.go-top .fa {
+	color:white;
+}
+
+// TEST :
+.js .input-file {
+  position: absolute;
+  top: 0; left: 0;
+  width: 225px;
+  padding: 14px 0;
+  opacity: 0;
+  cursor: pointer;
+}
+ 
+/* quelques styles d'interactions */
+.input-file {
+    cursor: pointer;
+    display: inline-block;
+    left: 0;
+    opacity: 0.01;
+    position: absolute;
+    top: 0;
+}
+
+.input-file-container {
+    position:relative;
+}
+
+.input-file-trigger {
+    background: #39d2b4 none repeat scroll 0 0;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 10px 30px;
+    transition: all 0.4s ease 0s;
+}
+
+
+input.input-file:hover + label, input.input-file:focus + label {
+    background: #34495e none repeat scroll 0 0;
+    color: #39d2b4;
+}

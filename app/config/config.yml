@@ -34,14 +34,14 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ AdminBundle, CmsBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
         #closure:
         #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
-        #yui_css:
-        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+        # yui_css:
+           # jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
 
 # Doctrine Configuration
 doctrine:
@@ -76,3 +76,45 @@ fos_user:
     db_driver:     orm
     firewall_name: main
     user_class:    BurgundyWineSchool\UserBundle\Entity\User
+    
+fm_elfinder:
+    assets_path: /BurgundyWineSchool/web/assets
+    instances:
+        form:
+            locale: %locale% # defaults to current request locale
+            editor: form # other choices are tinymce or simple, and form
+            fullscreen: true # defaults true, applies to simple and ckeditor editors
+            include_assets: false # disable if you want to handle loading of the javascript and css assets yourself
+            connector:
+                debug: false # defaults to false
+                roots:       # at least one root must be defined
+                    uploads:
+                        driver: LocalFileSystem
+                        path: uploads
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_deny: ['all']
+                        upload_max_size: 2M
+        default:
+            path_prefix: /BurgundyWineSchool/web/
+            locale: %locale% # defaults to current request locale
+            editor: ckeditor # other options are tinymce, tinymce4, form, custom and simple
+            fullscreen: true # defaults true, applies to simple and ckeditor editors
+            theme: smoothness # jquery theme
+            include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
+            connector:
+                debug: false # defaults to false
+                roots:       # at least one root must be defined
+                    uploads:
+                        show_hidden: false # defaults to false
+                        driver: LocalFileSystem
+                        path: uploads
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_deny: ['all']
+                        upload_max_size: 2M
+                        
+ivory_ck_editor:
+    default_config: default
+    configs:
+        default:
+            filebrowserBrowseRoute: elfinder
+            filebrowserBrowseRouteParameters: []

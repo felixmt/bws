@@ -13,15 +13,49 @@
 						<section class="panel title">
 							<div class="panel-body">
 								Ajouter un élément de menu
-                                   {% if page_id is defined %}
-                                        <div class="pull-right">
-                                            <a onclick="return confirm(\' Cette action est irréversible, êtes-vous sûr de vouloir supprimer cet élément de menu ?\');" href="{{ path('admin_menu_item_delete', { 'id': menuItem.id })  }}" class="btn btn-default btn-title">Supprimer</a>
-                                        </div>
-                                   {% endif %}
+                               {% if page_id is defined %}
+                                    <div class="pull-right">
+                                        <a onclick="return confirm('Cette action est irréversible, êtes-vous sûr de vouloir supprimer cet élément de menu ?');" href="{{ path('admin_menu_item_delete', { 'id': menuItem.id })  }}" class="btn btn-default btn-title">Supprimer</a>
+                                    </div>
+                               {% endif %}
 							</div>
 						</section>
 					</div>
 				</div>
+                
+                {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="row block">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <div class="panel-body notification-success">
+                                <div class="flash-notice" style="float:left;">
+                                    {{ flashMessage }}
+                                </div>
+                            <span class="tools pull-right">
+                                <a href="#" class="fa fa-times" onClick="hideBlock(this)"></a>
+                            </span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('warning') %}
+            <div class="row block">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <div class="panel-body notification-error">
+                                <div class="flash-notice" style="float:left;">
+                                    {{ flashMessage }}
+                                </div>
+                            <span class="tools pull-right">
+                                <a href="#" class="fa fa-times" onClick="hideBlock(this)"></a>
+                            </span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            {% endfor %}
+                
                 <div class="row">
                     <div class="col-md-12">
                         <section class="panel">
@@ -54,7 +88,8 @@
                                     <div class="form-group">
                                         <div class="col-md-12 col-lg-7" style="margin-right:0px">
                                             <div class="pull-right">
-                                                {{ form_row(form.Valider) }}
+                                                {{ form_widget(form.Enregistrer) }}
+                                                {{ form_widget(form.Valider) }}
                                             </div>
                                         </div>
                                     </div>

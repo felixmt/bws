@@ -21,6 +21,8 @@ class AppKernel extends Kernel
             new BurgundyWineSchool\CmsBundle\CmsBundle(),
             new BurgundyWineSchool\UserBundle\UserBundle(),
             new BurgundyWineSchool\AdminBundle\AdminBundle(),
+            new FM\ElfinderBundle\FMElfinderBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -28,6 +30,7 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new CoreSphere\ConsoleBundle\CoreSphereConsoleBundle();
         }
 
         return $bundles;

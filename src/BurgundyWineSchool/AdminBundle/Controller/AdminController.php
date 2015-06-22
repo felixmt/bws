@@ -17,12 +17,12 @@ class AdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        if (!isset($id)) {
+        // if (!isset($id)) {
             $appearance = new Appearance();
-        } else {
-            $repository = $em->getRepository('AdminBundle:Appearance');
-            $appearance = $repository->findOneById($id);
-        }
+        // } else {
+            // $repository = $em->getRepository('AdminBundle:Appearance');
+            // $appearance = $repository->findOneById($id);
+        // }
         
         $form = $this->createForm('appearance', $appearance);
         
@@ -34,6 +34,7 @@ class AdminController extends Controller
             
             return $this->redirect($this->generateUrl('admin_appearance'));
         }
+        
         return $this->render('AdminBundle:Admin:' . $templateName . '.html.twig', array(
             'form' => $form->createView(),
         ));

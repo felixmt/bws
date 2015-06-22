@@ -38,6 +38,7 @@ class MenuItemType extends AbstractType
             'read_only' => false, 
             'attr' => array('class' => 'form-control')  
         ));
+        $builder->add('Enregistrer', 'submit', array('attr' => array('class' => 'btn btn-info')));
         $builder->add('Valider', 'submit', array('attr' => array('class' => 'btn btn-success')));
     }
     

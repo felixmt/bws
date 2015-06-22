@@ -1,11 +1,25 @@
-login:
-    path:      /login
-    defaults: { _controller: FOSUserBundle:Security:login }
+# login:
+    # path:      /login
+    # defaults: { _controller: FOSUserBundle:Security:login }
 
-index:
-    path:     /test/{route}
+# logout:
+    # pattern:  /logout
+    # defaults: { _controller: FOSUserBundle:Security:logout }
+    
+# login_check:
+    # pattern:  /login_check
+    # defaults: { _controller: FOSUserBundle:Security:check }
+    
+newsletter_subscribe_ajax:
+    pattern: /__newsletter
+    defaults: { _controller: CmsBundle:Subscriber:newAjax, templateName: index }
+    requirements:
+        _method: POST
+
+page:
+    path:     /{route}
     defaults: { _controller: CmsBundle:Default:index, templateName:index }
     
-default:
+home:
     path:     /
     defaults: { _controller: CmsBundle:Default:index, templateName:index }

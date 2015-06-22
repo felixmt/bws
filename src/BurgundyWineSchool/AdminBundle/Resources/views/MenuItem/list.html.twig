@@ -2,92 +2,87 @@
 
 {% extends "AdminBundle::base_admin.html.twig" %}
 
-    {% block body %}
-    <section class="main-content" id="menuItems">
-			<section class="wrapper">
-				
-				{#<?php include_once __DIR__.'/../include/breadcrumb.php'; ?>#}
-				
-				<div class="row block title">
-					<div class="col-md-12">
-						<section class="panel title">
-							<div class="panel-body">
-								Gérer les éléments du menu
-							</div>
-						</section>
-					</div>
-				</div>
-                {% for flashMessage in app.session.flashbag.get('notice') %}
-                <div class="row block">
-                    <div class="col-md-12">
-                        <section class="panel">
-                            <div class="panel-body notification-success">
-                                    <div class="flash-notice" style="float:left;">
-                                        {{ flashMessage }}
-                                    </div>
-                                <span class="tools pull-right">
-                                    <a href="#" class="fa fa-times" onClick="hideBlock(this)"></a>
-                                </span>
+{% block body %}
+<section class="main-content" id="menuItems">
+        <section class="wrapper">
+            
+            {#<?php include_once __DIR__.'/../include/breadcrumb.php'; ?>#}
+            
+            <div class="row block title main-title">
+                <div class="col-md-12">
+                    <section class="panel title">
+                        <div class="panel-body">
+                            Gérer les éléments du menu
+                            <div class="pull-right">
+                                <a href="{{ path('admin_menu_item_new')  }}" class="btn btn-default btn-title">Ajouter</a>
                             </div>
-                        </section>
-                    </div>
+                        </div>
+                    </section>
                 </div>
-                {% endfor %}
-                <div class="row">
-					<div class="col-md-12">
-						<section class="panel">
-							<div class="panel-body table-responsive">
-                                <table id="menuItems" class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Nom</th>
-                                            <th>Chemin</th>
-                                            <th>Page associée</th>
-                                            <th style="min-width:50px"><i class="fa fa-cog fa-2x"></i></th>
+            </div>
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="row block">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <div class="panel-body notification-success">
+                                <div class="flash-notice" style="float:left;">
+                                    {{ flashMessage }}
+                                </div>
+                            <span class="tools pull-right">
+                                <a href="#" class="fa fa-times" onClick="hideBlock(this)"></a>
+                            </span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="panel">
+                        <div class="panel-body table-responsive">
+                            <table id="menuItems" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nom</th>
+                                        <th>Chemin</th>
+                                        <th>Page associée</th>
+                                        <th style="min-width:50px"><i class="fa fa-cog fa-2x"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for menuItem in menuItems %}
+                                        <tr id="menuItem_{{ menuItem.id }}">
+                                            <td>{{ menuItem.id }}</td>
+                                            <td>{{ menuItem.name }}</td>
+                                            <td>{{ menuItem.route }}</td>
+                                            <td>{% if menuItem.page is not null %} {{ menuItem.page.title }} {% endif %}</td>
+                                            <td><a style='margin-right:10px;' href="{{ path('admin_menu_item_update', { 'id': menuItem.id })  }}"><i class='fa fa-pencil-square-o color-blue'></i></a> 
+                                            <a onclick="return confirm('Cette action est irréversible, êtes-vous sûr de vouloir supprimer cet élément de menu ?');" href="javascript:deleteMenuItem({{menuItem.id}})"><i class="fa fa-times color-red"></i></a></td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for menuItem in menuItems %}
-                                            <tr>
-                                                <td>{{ menuItem.id }}</td>
-                                                <td>{{ menuItem.name }}</td>
-                                                <td>{{ menuItem.route }}</td>
-                                                <td>{% if menuItem.page is not null %} {{ menuItem.page.title }} {% endif %}</td>
-                                                <td><a style='margin-right:10px;' href="{{ path('admin_menu_item_update', { 'id': menuItem.id })  }}"><i class='fa fa-pencil-square-o color-blue'></i></a> 
-                                                <a onclick="return confirm(\'Cette action est irréversible, êtes-vous sûr de vouloir supprimer cet élément de menu ?\');" href="javascript:deleteUser(' . $user->getId() . ')"><i class="fa fa-times color-red"></i></a></td>
-                                            </tr>
-                                        {% endfor %}
-										{#<?php 
-										foreach ($users as $user) {
-											echo "<tr id='user" . $user->getId() . "'>";
-                                            echo "<td>" . $user->getName() . "</td>";
-											echo "<td>" . $user->getUsername() . "</td>";
-											echo "<td>";
-                                            if ($user->getUserType($user->getUserTypeId()) != null) {
-                                                echo $user->getUserType($user->getUserTypeId())->getName() . "</td>";
-                                            }
-											echo "<td>" . $user->getQuality() . "</td>";
-											echo "<td>";
-                                            if ($user->getCreationDate() != '') {
-                                                if (!$date = \DateTime::createFromFormat("Y-m-d H:i:s", $user->getCreationDate())) {
-                                                    $date = \DateTime::createFromFormat("d/m/Y", $user->getCreationDate());
-                                                }
-                                                echo $date->format("d/m/Y");
-                                            }
-                                            echo "</td>";
-											echo "<td><a style='margin-right:10px;' href='?section=admin-edit&id=" . $user->getId() . "'>" . "<i class='fa fa-pencil-square-o color-blue'></i></a>"; 
-											echo '<a onclick="return confirm(\'Cette action est irréversible, êtes-vous sûr de vouloir supprimer cet utilisateur ?\');" href="javascript:deleteUser(' . $user->getId() . ')"><i class="fa fa-times color-red"></i></a></td>';
-											echo "</tr>";
-										}
-										?>#}
-                                    </tbody>
-                                </table>
-							</div>
-						</section>
-					</div>
-				</div>
-			</section>
-		</section>
-	</section>
-    {% endblock %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+{% endblock %}
+{% block javascripts %}
+<script>
+function deleteMenuItem (id) {
+    $.post("{{ path ('admin_menu_item_deleteAjax') }}", { id : id }, function (data) {
+        if (data.isSuccess == 1) {
+            $("#menuItem_" + id).fadeOut(300, function() {
+                $(this).remove; 
+            });
+        } else {
+            $('<div class="row block"><div class="col-md-12"><section class="panel"><div class="panel-body notification-error"><div class="flash-notice" style="float:left;">' + data.notice + '</div><span class="tools pull-right"><a href="#" class="fa fa-times" onClick="hideBlock(this)"></a></span></div></section></div></div>').insertAfter(".main-title");
+        }
+    });
+}
+</script>
+{% endblock %}

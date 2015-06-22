@@ -1,0 +1,149 @@
+/* import font Museo */
+@import url("//hello.myfonts.net/count/2c31f9");
+
+/*reset*/
+* {margin:0; padding:0;}
+html {
+    background: url("../../uploads/background.jpg") no-repeat;
+    background-color:black;
+    background-position: center center;
+    background-size:100%;
+    margin:0;
+    padding:0;
+    font-family: serif;
+	overflow-y: scroll;
+	font-size:12px;
+}
+body {
+    height:100%
+    line-height:200px;
+    background-color:transparent !important;
+    font-family: serif !important;
+    font-size:12px;
+}
+
+a {
+    cursor:pointer;
+}
+
+#logo {
+    position:absolute;
+    left:0;
+    bottom:1px;
+}
+
+#container {
+    height:100%;
+    background-color:#CED0DC;
+    width:961px;
+    height:560px;
+    background-color:#000;
+    margin:0 auto;
+    
+    
+}
+
+#sub-container {
+    position:relative;
+    height:100%;
+    
+}
+
+#menu {
+    width:175px;
+    height:100%;
+    background-color:#000;
+    font-size:11px;
+    text-align:right;
+    float:left;
+    position:relative;
+    z-index:10;
+}
+
+#menu .sidebar {
+    padding-top:35px;
+    padding-right:25px;
+}
+
+#menu li {
+    padding-top:10px;
+    list-style-type:none;
+}
+
+#menu li a {
+    color:#808285;
+    text-decoration:none;
+    text-transform: uppercase; 
+}
+
+#menu li a:hover {
+    color:#fff;
+}
+
+#wrapper {
+    background: url("../../uploads/background-content.jpg") no-repeat;
+    background-size:100%;
+    height:500px;
+    position:relative;
+    left:175px;
+    width:786px;
+    top:30px;
+}
+
+#bloc {
+    background-color:#fff;
+    opacity:0.85;
+    height:500px;
+    width:661px;
+    margin:0 auto;
+}
+
+#content {
+    position:absolute;
+    padding:30px;
+    /*width:601px;
+    height:440px;*/
+    width:661px;;
+    height:100%;
+    overflow-y:scroll;
+}
+
+#content-bottom-marginer {
+    padding-bottom:30px;
+}
+
+#social-links {
+    position:absolute;
+    right:20px;
+    bottom:4px;
+}
+
+#social-links i {
+    color:#fff;
+    padding-left:15px;
+    font-size:1.7em !important;
+}
+
+.form-group {
+    padding-right:15px;
+}
+
+.color-red, .notification-error {
+	color:#a94442;
+}
+.color-green, .notification-success {
+	color:#3c763d;
+}
+
+/* NEWSLETTER FORM ---------------- */
+#newsletter-form > .btn-info:focus, #newsletter-form > .btn-info:hover {
+    background-color:#191919;
+}
+
+#newsletter-form > .btn-info.disabled {
+    background-color:#000;
+}
+
+#newsletter-form > .btn-info {
+    background-image: linear-gradient(to bottom, #000 0px, #191919 100%);
+}

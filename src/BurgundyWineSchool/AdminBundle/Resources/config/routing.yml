@@ -13,6 +13,16 @@ admin_page_list:
 admin_page_update:
     path:     /admin/pages/update/{id}
     defaults: { _controller: AdminBundle:Page:new, templateName: new }
+    
+admin_page_delete:
+    path:     /admin/pages/delete/{id}
+    defaults: { _controller: AdminBundle:Page:delete, templateName: list }
+
+admin_page_deleteAjax:
+    pattern: /pages/deleteAjax
+    defaults: { _controller: AdminBundle:Page:deleteAjax, templateName: list }
+    requirements:
+        _method: POST
 
 admin_menu_item_new:
     path:     /admin/menu/items/new
@@ -29,6 +39,12 @@ admin_menu_item_update:
 admin_menu_item_delete:
     path:     /admin/menu/items/delete/{id}
     defaults: { _controller: AdminBundle:MenuItem:delete, templateName: list }
+    
+admin_menu_item_deleteAjax:
+    pattern: /menu/items/deleteAjax
+    defaults: { _controller: AdminBundle:MenuItem:deleteAjax, templateName: list }
+    requirements:
+        _method: POST
 
 admin_appearance:
     path:     /admin/appearance

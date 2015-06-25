@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new BurgundyWineSchool\AdminBundle\AdminBundle(),
             new FM\ElfinderBundle\FMElfinderBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Hype\MailchimpBundle\HypeMailchimpBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

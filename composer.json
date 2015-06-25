@@ -25,7 +25,8 @@
         "friendsofsymfony/user-bundle": "dev-master",
         "helios-ag/fm-elfinder-bundle": "~5",
         "egeloen/ckeditor-bundle": "~2.0",
-        "coresphere/console-bundle": "dev-master"
+        "coresphere/console-bundle": "dev-master",
+        "ahmedsamy/hype-mailchimp-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

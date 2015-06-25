@@ -118,3 +118,8 @@ ivory_ck_editor:
         default:
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []
+
+hype_mailchimp:
+    api_key: 81a3647fdaedcae735db996a8bcbf30b-us11
+    default_list: e5642d5474
+    ssl: true #optional configuring curl connection

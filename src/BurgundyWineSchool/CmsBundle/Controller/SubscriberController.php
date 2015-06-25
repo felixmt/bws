@@ -35,6 +35,13 @@ class SubscriberController extends Controller
                         $em->persist($tmp);
                         $em->flush();
                         
+                        $mc = $this->get('hype_mailchimp');
+                        $data = $mc->getList()->addMerge_vars(
+                                    array(
+                                        'lname' => $name
+                                ))->subscribe($email);
+                        print_r($data);
+                        
                         return new JsonResponse(array('isSuccess' => "1", "notice" => "Votre inscription a bien été prise en compte."));
                     }
                 } else {

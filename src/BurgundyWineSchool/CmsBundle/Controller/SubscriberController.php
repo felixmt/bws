@@ -1,4 +1,16 @@
 <?php
+/**
+*   Subscriber Controller
+*
+*   PHP version 5.5.12
+*
+*   @category  PHP
+*   @package   Cmsundle
+*   @author    Felix MOTOT <felix@motot.fr>
+*   @copyright 2015 Félix Motot
+*   @license   Sopra http://choosealicense.com/licenses/bsd-2-clause/
+*   @link      http://burgundywineschool.com
+*/
 
 namespace BurgundyWineSchool\CmsBundle\Controller;
 
@@ -7,13 +19,30 @@ use BurgundyWineSchool\CmsBundle\Entity\Subscriber;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+/**
+* Subscriber controller
+*
+* @category  PHP
+* @package   Trunkadmin
+* @author    Felix MOTOT <felix@motot.fr>
+* @copyright 2015 Félix Motot
+* @license   Sopra http://choosealicense.com/licenses/bsd-2-clause/
+* @link      http://soprasteria.com  
+*/
 class SubscriberController extends Controller
 {
-    public function newAjaxAction($templateName, $route = null)
+    /**
+    * NewAjax
+    *
+    * @param string $templateName name of template to be displayed
+    *
+    * @return void
+    */
+    public function newAjaxAction($templateName)
     {
         $request = $this->container->get('request');
 
-        if($request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
             $name = '';
             $name = $request->request->get('name');
             $email = '';
@@ -26,7 +55,13 @@ class SubscriberController extends Controller
                     $tmp = $repository->findOneByEmail($email);
                     if ($tmp != null) {
                     
-                        return new JsonResponse(array('isSuccess' => "0", "notice" => "Cette adresse email est déjà utilisée"));
+                        return new JsonResponse(
+                            array(
+                                "isSuccess" => "0",
+                                "notice" => "Cette adresse email est déjà 
+                                    utilisée"
+                            )
+                        );
                     } else {
                         $tmp = new Subscriber();
                         $tmp->setName($name);
@@ -37,53 +72,79 @@ class SubscriberController extends Controller
                         
                         $mc = $this->get('hype_mailchimp');
                         $data = $mc->getList()->addMerge_vars(
-                                    array(
-                                        'lname' => $name
-                                ))->subscribe($email);
-                        print_r($data);
+                            array(
+                                'lname' => $name
+                            )
+                        )->subscribe($email);
                         
-                        return new JsonResponse(array('isSuccess' => "1", "notice" => "Votre inscription a bien été prise en compte."));
+                        return new JsonResponse(
+                            array(
+                                "isSuccess" => "1",
+                                "notice" => "Votre inscription a 
+                                    bien été prise en compte."
+                            )
+                        );
                     }
                 } else {
                     
-                    return new JsonResponse(array('isSuccess' => "0", "notice" => "Veuillez entrer une adresse email valide."));
+                    return new JsonResponse(
+                        array(
+                            "'isSuccess" => "0", 
+                            "notice" => "Veuillez entrer une adresse email valide."
+                        )
+                    );
                 }
             } else {
                 
-                return new JsonResponse(array('isSuccess' => "0", "notice" => "Veuillez compléter tous les champs"));
+                return new JsonResponse(
+                    array(
+                        "isSuccess" => "0",
+                        "notice" => "Veuillez compléter tous les champs"
+                    )
+                );
             }
         } else {
             
-            return new JsonResponse(array('isSuccess' => "0", "notice" => "Une erreur s'est produite, veuillez réessayer."));
+            return new JsonResponse(
+                array(
+                    'isSuccess' => "0",
+                    "notice" => "Une erreur s'est produite, veuillez réessayer."
+                )
+            );
         }
     }
     
-    public function newAction($templateName, $route = null)
-    {
-        $request = $this->container->get('request');
+    /**
+    * New subscriber
+    *
+    * @param string $templateName name of template to be displayed
+    *
+    * @return void
+    */
+    // public function newAction($templateName)
+    // {
+        // $request = $this->container->get('request');
         
-        if ($tmp != null) {
+        // if ($tmp != null) {
         
-            // return new JsonResponse(array('isSuccess' => "0", "notice" => "Cette adresse email est déjà utilisée"));
-        } else {
-            $tmp = new Subscriber();
-            $tmp->setName($name);
-            $tmp->setEmail($email);
+        // } else {
+            // $tmp = new Subscriber();
+            // $tmp->setName($name);
+            // $tmp->setEmail($email);
             
-            $em->persist($tmp);
-            $em->flush();
-            
-            // return new JsonResponse(array('isSuccess' => "1", "notice" => "Votre inscription a bien été prise en compte."));
-        }
-        $em = $this->getDoctrine()->getManager();
-        $repository = $em->getRepository('CmsBundle:MenuItem');
-        $menuItems = $repository->FindAll();
+            // $em->persist($tmp);
+            // $em->flush();
+                    // }
+        // $em = $this->getDoctrine()->getManager();
+        // $repository = $em->getRepository('CmsBundle:MenuItem');
+        // $menuItems = $repository->FindAll();
         
-        $repository = $em->getRepository('CmsBundle:Page');
-        $content = $repository->FindOneByIsHomepage(1);
+        // $repository = $em->getRepository('CmsBundle:Page');
+        // $content = $repository->FindOneByIsHomepage(1);
         
-        return $this->render('CmsBundle:Default:' . $templateName . '.html.twig', array(
-            'menuItems' => $menuItems, 'content' => $content,
-        ));
-    }
+        // return $this->render(
+            // 'CmsBundle:Default:' . $templateName . '.html.twig', array(
+            // 'menuItems' => $menuItems, 'content' => $content,
+        // ));
+    // }
 }

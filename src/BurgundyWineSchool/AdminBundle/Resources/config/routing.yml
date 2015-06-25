@@ -20,7 +20,7 @@ admin_page_delete:
 
 admin_page_deleteAjax:
     pattern: /pages/deleteAjax
-    defaults: { _controller: AdminBundle:Page:deleteAjax, templateName: list }
+    defaults: { _controller: AdminBundle:Page:deleteAjax }
     requirements:
         _method: POST
 
@@ -42,7 +42,7 @@ admin_menu_item_delete:
     
 admin_menu_item_deleteAjax:
     pattern: /menu/items/deleteAjax
-    defaults: { _controller: AdminBundle:MenuItem:deleteAjax, templateName: list }
+    defaults: { _controller: AdminBundle:MenuItem:deleteAjax }
     requirements:
         _method: POST
 

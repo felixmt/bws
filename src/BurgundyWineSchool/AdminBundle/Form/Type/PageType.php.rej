@@ -1,0 +1,61 @@
+***************
+*** 50,56 ****
+              )
+          );
+          
+-         $builder->add(
+              'content', 'ckeditor', array(
+                  'label' => 'Contenu', 
+                  'attr' => array(
+--- 50,56 ----
+              )
+          );
+          
++         $builder->add(
+              'content', 'ckeditor', array(
+                  'label' => 'Contenu', 
+                  'attr' => array(
+***************
+*** 74,85 ****
+              )
+          );
+          
+-         $builder->add(
+              'Enregistrer', 'submit', array(
+                  'attr' => array('class' => 'btn btn-info')
+              )
+          );
+-         $builder->add(
+              'Valider', 'submit', array(
+                  'attr' => array('class' => 'btn btn-success')
+              )
+--- 74,85 ----
+              )
+          );
+          
++         $builder->add(
+              'Enregistrer', 'submit', array(
+                  'attr' => array('class' => 'btn btn-info')
+              )
+          );
++         $builder->add(
+              'Valider', 'submit', array(
+                  'attr' => array('class' => 'btn btn-success')
+              )
+***************
+*** 105,111 ****
+      */
+      public function setDefaultOptions(optionsResolverInterface $resolver)
+      {
+-         $resolver->setDefaults(
+              array(
+                  'data_class' => 'BurgundyWineSchool\CmsBundle\Entity\Page',
+              )
+--- 105,111 ----
+      */
+      public function setDefaultOptions(optionsResolverInterface $resolver)
+      {
++         $resolver->setDefaults(
+              array(
+                  'data_class' => 'BurgundyWineSchool\CmsBundle\Entity\Page',
+              )

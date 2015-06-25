@@ -1,5 +1,16 @@
 <?php
-
+/**
+*   Appearance Entity
+*
+*   PHP version 5.5.12
+*
+*   @category  PHP
+*   @package   AdminBundle
+*   @author    Felix MOTOT <felix@motot.fr>
+*   @copyright 2015 Félix Motot
+*   @license   Sopra http://choosealicense.com/licenses/bsd-2-clause/
+*   @link      http://burgundywineschool.com
+*/
 namespace BurgundyWineSchool\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -9,6 +20,13 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Appearance
  *
+ * @category  PHP
+ * @package   Trunkadmin
+ * @author    Felix MOTOT <felix@motot.fr>
+ * @copyright 2015 Félix Motot
+ * @license   Sopra http://choosealicense.com/licenses/bsd-2-clause/
+ * @link      http://soprasteria.com  
+ *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="BurgundyWineSchool\AdminBundle\Entity\AppearanceRepository")
  * @ORM\HasLifecycleCallbacks
@@ -16,6 +34,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class Appearance
 {
     /**
+     * Id
+     *
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -132,6 +152,7 @@ class Appearance
      * Set path
      *
      * @param string $path
+     *
      * @return Appearance
      */
     public function setPath($path)
@@ -155,6 +176,7 @@ class Appearance
      * Set backgroundPath
      *
      * @param string $backgroundPath
+     *
      * @return Appearance
      */
     public function setBackgroundPath($path)

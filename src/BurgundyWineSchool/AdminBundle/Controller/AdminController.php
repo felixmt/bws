@@ -31,7 +31,7 @@ use BurgundyWineSchool\AdminBundle\Entity\Appearance;
 class AdminController extends Controller
 {
     /**
-    * Display appearance customization
+    * admin homepage
     *
     * @param string $templateName name of template to be displayed
     *

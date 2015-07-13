@@ -88,12 +88,9 @@ class MenuItemController extends Controller
             );
             if ($form->get('Enregistrer')->isClicked()) {
             
-                return $this->render(
-                    'AdminBundle:MenuItem:' . $templateName . '.html.twig', array(
-                        'form' => $form->createView(), 'menuItem' => $menuItem
-                    )
-                );
+                return $this->redirect($this->generateUrl('admin_menu_item_update', array('id' => $menuItem->getId())));
             } else {
+                
                 return $this->redirect($this->generateUrl('admin_menu_item_list'));
             }
         }

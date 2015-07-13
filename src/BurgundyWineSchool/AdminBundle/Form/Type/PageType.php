@@ -66,6 +66,7 @@ class PageType extends AbstractType
                 ),
             )
         );
+        
         $builder->add(
             'isHomepage', 'checkbox', array(
                 'label' => 'Utiliser en tant que page d\'accueil', 'attr' => array(

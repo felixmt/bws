@@ -91,11 +91,7 @@ class PageController extends Controller
             
             if ($form->get('Enregistrer')->isClicked()) {
                 
-                return $this->render(
-                    'AdminBundle:Page:' . $templateName . '.html.twig', array(
-                        'form' => $form->createView(), 'page' => $page
-                    )
-                );
+                return $this->redirect($this->generateUrl('admin_page_update', array('id' => $page->getId())));
             } else {
                 
                 return $this->redirect($this->generateUrl('admin_page_list'));

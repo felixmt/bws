@@ -95,6 +95,11 @@ a.breadcrumb-last {
     padding-right:15px;
 }
 
+.form-group ul li {
+    list-style-type: none;
+    color: #a94442;
+}
+
 /* HEADER ***************************************/
 /* hide logos when screen size smaller than 800 px */
 @media (max-width:768px) { 
